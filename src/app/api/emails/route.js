@@ -6,7 +6,8 @@ export async function POST(req) {
             recipientEmail: "msinannoufal@gmail.com",
             subject: "Apology",
             message: "Hi this is to say sorry to you",
-            sendTime: new Date()
+            sendTime: new Date(),
+            status: "Pending"
         }
     })
     return Response.json(newEmail)
