@@ -25,7 +25,7 @@ const DraftForm = () => {
             recipientEmail : email,
             subject : subject,
             message : message,
-            status : option === "Schedule" ?  "scheduled" : "sent",
+            status : option === "Schedule" ?  "scheduled" : "send now",
             sendTime : option === "Schedule" ? new Date(schedule) : new Date(),
         };
 

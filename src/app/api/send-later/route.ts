@@ -9,10 +9,14 @@ export async function POST() {
     try { 
       const emailDetails = await prisma.email.findMany({
         where: {
-          status: "send now"
-        }
+          status: "scheduled",
+          sendTime: {
+            lte : new Date()
+          },
+        },
       });
         const results = [];
+        
         for (const email of emailDetails) {
           const { data, error } = await resend.emails.send({
             from : 'onboarding@resend.dev',
