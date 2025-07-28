@@ -1,5 +1,6 @@
 "use client"
 import React, { ChangeEvent, ReactNode, useState } from 'react'
+import Gradient from './Gradient';
 
 const DraftForm = () => {
     const [email, setEmail] = useState("");
