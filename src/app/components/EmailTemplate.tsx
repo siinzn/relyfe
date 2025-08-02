@@ -18,7 +18,7 @@ const EmailTemplate = ({ recipientEmail, subject, message, status, sendTime }: E
       minHeight: '100vh'
     }}>
       <div style={{
-        maxWidth: '600px',
+        maxWidth: '900px',
         margin: '0 auto',
         backgroundColor: '#ffffff',
         borderRadius: '16px',
@@ -44,7 +44,7 @@ const EmailTemplate = ({ recipientEmail, subject, message, status, sendTime }: E
             fontSize: '14px',
             color: 'rgba(255, 255, 255, 0.9)'
           }}>
-            Anonymous Email Service
+            Message Delivery Service
           </div>
         </div>
 
@@ -96,25 +96,6 @@ const EmailTemplate = ({ recipientEmail, subject, message, status, sendTime }: E
               display: 'grid',
               gap: '12px'
             }}>
-              
-              {/* Recipient */}
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                fontSize: '14px',
-                color: '#6c757d'
-              }}>
-                <span style={{
-                  fontWeight: '600',
-                  marginRight: '8px',
-                  minWidth: '80px'
-                }}>
-                  📨 To:
-                </span>
-                <span style={{ color: '#0085ff', fontWeight: '500' }}>
-                  {recipientEmail}
-                </span>
-              </div>
 
               {/* Send Time */}
               <div style={{
@@ -128,7 +109,7 @@ const EmailTemplate = ({ recipientEmail, subject, message, status, sendTime }: E
                   marginRight: '8px',
                   minWidth: '80px'
                 }}>
-                  ⏰ Sent:
+                  Sent:
                 </span>
                 <span>
                   {new Date(sendTime).toLocaleString('en-US', {
@@ -140,33 +121,6 @@ const EmailTemplate = ({ recipientEmail, subject, message, status, sendTime }: E
                     minute: '2-digit',
                     timeZoneName: 'short'
                   })}
-                </span>
-              </div>
-
-              {/* Status Badge */}
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                fontSize: '14px',
-                color: '#6c757d'
-              }}>
-                <span style={{
-                  fontWeight: '600',
-                  marginRight: '8px',
-                  minWidth: '80px'
-                }}>
-                  📊 Status:
-                </span>
-                <span style={{
-                  backgroundColor: status === 'scheduled' ? '#fff3cd' : '#d1ecf1',
-                  color: status === 'scheduled' ? '#856404' : '#0c5460',
-                  padding: '4px 12px',
-                  borderRadius: '20px',
-                  fontSize: '12px',
-                  fontWeight: '600',
-                  textTransform: 'capitalize' as const
-                }}>
-                  {status === 'send now' ? '🚀 Sent Instantly' : '📅 Was Scheduled'}
                 </span>
               </div>
             </div>
@@ -185,21 +139,14 @@ const EmailTemplate = ({ recipientEmail, subject, message, status, sendTime }: E
             color: '#6c757d',
             marginBottom: '12px'
           }}>
-            This email was sent anonymously via
+            This message was delivered via
           </div>
           <div style={{
             fontSize: '16px',
             fontWeight: 'bold',
             color: '#0085ff'
           }}>
-            🔒 Relyfe.me
-          </div>
-          <div style={{
-            fontSize: '12px',
-            color: '#9ca3af',
-            marginTop: '8px'
-          }}>
-            Complete privacy • No tracking • Anonymous delivery
+            Relyfe.me
           </div>
         </div>
 
@@ -214,21 +161,10 @@ const EmailTemplate = ({ recipientEmail, subject, message, status, sendTime }: E
             color: 'rgba(255, 255, 255, 0.9)',
             lineHeight: '1.4'
           }}>
-            🛡️ Your identity remains completely anonymous. The sender's information is not tracked or stored.
+            The sender's information is not tracked or stored.
           </div>
         </div>
-
-      </div>
-
-      {/* Mobile Responsiveness Note */}
-      <div style={{
-        textAlign: 'center' as const,
-        marginTop: '30px',
-        fontSize: '12px',
-        color: '#9ca3af'
-      }}>
-        Relyfe - Anonymous Email Service
-      </div>
+      </div>  
     </div>
   )
 }

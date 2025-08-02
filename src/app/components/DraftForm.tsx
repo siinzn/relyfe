@@ -56,20 +56,20 @@ const DraftForm = () => {
 <div className='mt-8 px-4'>
     <form 
         action=""
-        className='flex flex-col bg-[#F8F9FA] py-8 px-8 rounded-2xl shadow-2xl border border-gray-200 max-w-2xl mx-auto backdrop-blur-sm'
+        className='flex flex-col bg-gray-600/10 py-8 px-8 rounded-2xl shadow-2xl border border-gray-200 max-w-4xl mx-auto backdrop-blur-2xl'
         onSubmit={handleSubmit}
     >
-        {/* Header */}
+        {/* Top part*/}
         <div className="mb-8 text-center">
-            <h2 className="text-3xl font-bold text-[#1E1E1E] mb-2">Compose Email</h2>
+            <h2 className="text-3xl font-bold text-white mb-2">Compose Email</h2>
             <p className="text-[#6B7280] text-sm">Send your message anonymously</p>
         </div>
 
-        {/* Recipient Email */}
+        {/* Email */}
         <div className="mb-6">
             <label 
                 htmlFor="recipientEmail" 
-                className="block text-sm font-semibold text-[#1E1E1E] mb-2"
+                className="block text-sm font-semibold text-white mb-2"
             >
                 Recipient Email
             </label>
@@ -80,7 +80,7 @@ const DraftForm = () => {
                 value={email}
                 onChange={handleEmailChange}
                 placeholder="recipient@example.com"
-                className='w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-[#1E1E1E] bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200 placeholder-gray-400'
+                className='w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200 placeholder-gray-400'
                 required
             />
         </div>
@@ -89,7 +89,7 @@ const DraftForm = () => {
         <div className="mb-6">
             <label 
                 htmlFor="subject" 
-                className="block text-sm font-semibold text-[#1E1E1E] mb-2"
+                className="block text-sm font-semibold text-white mb-2"
             >
                 Subject
             </label>
@@ -100,7 +100,7 @@ const DraftForm = () => {
                 value={subject}
                 onChange={handleSubjectChange}
                 placeholder="Enter your subject line"
-                className='w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-[#1E1E1E] bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200 placeholder-gray-400'
+                className='w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200 placeholder-gray-400'
                 required
             />
         </div>
@@ -109,7 +109,7 @@ const DraftForm = () => {
         <div className="mb-6">
             <label 
                 htmlFor="message" 
-                className="block text-sm font-semibold text-[#1E1E1E] mb-2"
+                className="block text-sm font-semibold text-white mb-2"
             >
                 Message
             </label>
@@ -120,7 +120,7 @@ const DraftForm = () => {
                 onChange={handleMessageChange}
                 placeholder="Write your message here..."
                 rows={6}
-                className='w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-[#1E1E1E] bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200 placeholder-gray-400 resize-vertical min-h-[120px]'
+                className='w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-gray-900 bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200 placeholder-gray-400 resize-vertical min-h-[120px]'
                 required
             />
         </div>
@@ -129,7 +129,7 @@ const DraftForm = () => {
         <div className="mb-8">
             <label 
                 htmlFor="status" 
-                className="block text-sm font-semibold text-[#1E1E1E] mb-3"
+                className="block text-sm font-semibold text-white mb-3"
             >
                 When to send
             </label>
@@ -138,7 +138,7 @@ const DraftForm = () => {
                 id="status"
                 value={option} 
                 onChange={handleOptionChange}
-                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-[#1E1E1E] bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200 cursor-pointer"
+                className="w-full px-4 py-3 border-2 border-gray-300 rounded-lg text-whi te bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200 cursor-pointer"
             >
                 <option value="Send now">📤 Send now</option>
                 <option value="Schedule">⏰ Schedule for later</option>
@@ -149,7 +149,7 @@ const DraftForm = () => {
                 <div className="mt-4 p-4 bg-[#0085ff]/5 rounded-lg border border-[#0085ff]/20">
                     <label 
                         htmlFor="schedule" 
-                        className="block text-sm font-medium text-[#1E1E1E] mb-2"
+                        className="block text-sm font-medium text-white mb-2"
                     >
                         Choose date and time
                     </label>
@@ -158,14 +158,14 @@ const DraftForm = () => {
                         id="schedule"
                         value={schedule} 
                         onChange={handleScheduleChange}
-                        className="w-full px-4 py-3 border-2 border-[#0085ff]/30 rounded-lg text-[#1E1E1E] bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200"
+                        className="w-full px-4 py-3 border-2 border-[#0085ff]/30 rounded-lg text-whi te bg-white focus:border-[#0085ff] focus:ring-2 focus:ring-[#0085ff]/20 focus:outline-none transition-all duration-200"
                         required
                     />
                 </div>
             )}
         </div>
 
-        {/* Submit Button */}
+        {/* Button */}
         <button 
             type="submit"
             className="w-full py-4 px-6 bg-gradient-to-r from-[#FF6B35] to-[#FF8500] text-white font-bold text-lg rounded-lg hover:from-[#FF5722] hover:to-[#FF6B35] transform hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-[#FF6B35]/30"
@@ -179,7 +179,6 @@ const DraftForm = () => {
         <p className="text-center text-xs text-[#9e9e9e] mt-6">
             Your email will be sent completely anonymously
         </p>
-
     </form>
 </div>
   )

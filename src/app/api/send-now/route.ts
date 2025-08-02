@@ -15,7 +15,7 @@ export async function POST() {
         const results = [];
         for (const email of emailDetails) {
           const { data, error } = await resend.emails.send({
-            from : 'noreply@relyfee.me',
+            from : 'Message@relyfee.me',
             to : email.recipientEmail,
             subject : email.subject,
             react : EmailTemplate({
