@@ -18,7 +18,7 @@ const DraftForm = () => {
     }
     const handleScheduleChange = (e : ChangeEvent<HTMLInputElement>) => { setSchedule(e.target.value); }
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const payload = {
@@ -30,29 +30,32 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     };
 
     try {
-        // 1. Save to DB
         const res = await fetch("/api/emails", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
         });
 
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const result = await res.json();
-        console.log("Success: ", result);
+        console.log("Saved: ", result);
 
-        // 2. If "Send now", trigger the email sending
+        // 💡 This part is KEY for "send now"
         if (payload.status === "send now") {
-            const sendNowRes = await fetch("/api/send-now", {
-                method: "POST",
-            });
-            if (!sendNowRes.ok) throw new Error("Failed to send email immediately.");
-            console.log("Sent immediately via /api/send-now");
+        // Optional: wait a bit in case DB write is slow
+        await new Promise((r) => setTimeout(r, 500));
+
+        const sendNowRes = await fetch("/api/send-now", {
+            method: "POST",
+        });
+
+        if (!sendNowRes.ok) throw new Error("Immediate send failed");
+        console.log("Email sent immediately!");
         }
 
-        // 3. Reset form
+        // Clear form
         setEmail("");
         setSubject("");
         setMessage("");
@@ -61,8 +64,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     } catch (error) {
         console.error("Error: ", error);
     }
-};
-
+    };
 
   return (
 <div className='mt-8 px-4'>
