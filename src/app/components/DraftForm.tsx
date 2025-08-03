@@ -18,39 +18,51 @@ const DraftForm = () => {
     }
     const handleScheduleChange = (e : ChangeEvent<HTMLInputElement>) => { setSchedule(e.target.value); }
 
-    const handleSubmit  = async (e : React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-        const payload = {
-            recipientEmail : email,
-            subject : subject,
-            message : message,
-            status : option === "Schedule" ?  "scheduled" : "send now",
-            sendTime : option === "Schedule" ? new Date(schedule) : new Date(),
-        };
+    const payload = {
+        recipientEmail: email,
+        subject: subject,
+        message: message,
+        status: option === "Schedule" ? "scheduled" : "send now",
+        sendTime: option === "Schedule" ? new Date(schedule) : new Date(),
+    };
 
-        try {
-            const res  = await fetch('/api/emails', {
-                method: 'POST',
-                headers: {
-                    'Content-Type' : 'application/json',
-                },
-                body: JSON.stringify(payload),
+    try {
+        // 1. Save to DB
+        const res = await fetch("/api/emails", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        });
+
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        const result = await res.json();
+        console.log("Success: ", result);
+
+        // 2. If "Send now", trigger the email sending
+        if (payload.status === "send now") {
+            const sendNowRes = await fetch("/api/send-now", {
+                method: "POST",
             });
-
-            if(!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-            const result = await res.json();
-            console.log('Sucess: ', result);
-
-            setEmail("");
-            setSubject("");
-            setMessage("");
-            setOption("")
-            setSchedule("")
-        } catch(error) {
-            console.log('Error: ', error); 
+            if (!sendNowRes.ok) throw new Error("Failed to send email immediately.");
+            console.log("Sent immediately via /api/send-now");
         }
+
+        // 3. Reset form
+        setEmail("");
+        setSubject("");
+        setMessage("");
+        setOption("");
+        setSchedule("");
+    } catch (error) {
+        console.error("Error: ", error);
     }
+};
+
 
   return (
 <div className='mt-8 px-4'>
