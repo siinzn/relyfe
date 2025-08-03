@@ -2,7 +2,6 @@ import React from 'react'
 import { ReactNode } from 'react'
 
 const MaxWidthWrapper = ({
-    className,
     children
 } : {
     className?: string,

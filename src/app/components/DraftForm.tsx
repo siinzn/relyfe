@@ -1,5 +1,5 @@
 "use client"
-import React, { ChangeEvent, ReactNode, useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 
 const DraftForm = () => {
     const [email, setEmail] = useState("");

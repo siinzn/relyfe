@@ -2,6 +2,7 @@
 import Gradient from "./components/Gradient";
 import MaxWidthWrapper from "./components/MaxWidthWrapper";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Home() {
   const router = useRouter();
@@ -43,11 +44,13 @@ export default function Home() {
            
           {/* Right Side */}
           <div className="flex flex-col justify-center items-start w-full lg:w-1/2 text-white px-2 sm:px-4 lg:px-8 bg-gray-600/10 py-4 sm:py-7 rounded-xl border border-white/20 shadow-2xl backdrop-blur-2xl mt-4 sm:-mt-10">
-            <img
-               src="/example.png"
-               alt="Example Screenshot"
-               className="rounded-2xl w-full h-auto"
-              />
+            <Image
+              src="/example.png"
+              alt="Example Screenshot"
+              width={800}
+              height={600} 
+              className="rounded-2xl w-full h-auto"
+            />
           </div>
         </div>
        </MaxWidthWrapper>

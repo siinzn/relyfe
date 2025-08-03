@@ -8,7 +8,7 @@ type EmailTemplateProps = {
     sendTime: Date;
 }
 
-const EmailTemplate = ({ recipientEmail, subject, message, status, sendTime }: EmailTemplateProps) => {
+const EmailTemplate = ({subject, message, sendTime }: EmailTemplateProps) => {
   return (
     <div style={{
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
