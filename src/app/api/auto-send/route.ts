@@ -6,7 +6,6 @@ const resend = new Resend(process.env.RESEND_API);
 
 export async function POST() {
   try {
-    // 1. Find emails that are scheduled and due to be sent
     const emailDetails = await prisma.email.findMany({
       where: {
         status: "scheduled",
@@ -18,7 +17,6 @@ export async function POST() {
 
     const results = [];
 
-    // 2. Send each due email
     for (const email of emailDetails) {
       const { data, error } = await resend.emails.send({
         from: "Message@relyfee.me",
@@ -33,7 +31,6 @@ export async function POST() {
         }),
       });
 
-      // 3. Update email status to "Sent"
       await prisma.email.update({
         where: { id: email.id },
         data: { status: "Sent" },

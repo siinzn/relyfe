@@ -42,9 +42,7 @@ const DraftForm = () => {
         const result = await res.json();
         console.log("Saved: ", result);
 
-        // 💡 This part is KEY for "send now"
         if (payload.status === "send now") {
-        // Optional: wait a bit in case DB write is slow
         await new Promise((r) => setTimeout(r, 500));
 
         const sendNowRes = await fetch("/api/send-now", {
@@ -55,7 +53,6 @@ const DraftForm = () => {
         console.log("Email sent immediately!");
         }
 
-        // Clear form
         setEmail("");
         setSubject("");
         setMessage("");
